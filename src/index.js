@@ -39,12 +39,12 @@ let wind = weatherBox.querySelector('#wind');
 getTemp().then(console.log)
 getTemp('New York').then((res) => {
   cityName.innerHTML = res.name;
-  tempCels.innerHTML = res.main.temp;
+  tempCels.innerHTML = res.main.temp + ' C';
   tempIcon.setAttribute('src', "http://openweathermap.org/img/wn/" + res.weather[0].icon + ".png");
   weatherStatus.innerHTML = res.weather[0].main;
-  tempMin.innerHTML = `Min temp: ${res.main.temp_min}`;
-  tempMax.innerHTML = `Max temp: ${res.main.temp_max}`;
-  wind.innerHTML = `Wind speed: ${res.wind.speed}`;
+  tempMin.innerHTML = `Min temp: ${res.main.temp_min}` + ' C';
+  tempMax.innerHTML = `Max temp: ${res.main.temp_max}` + ' C';
+  wind.innerHTML = `Wind speed: ${res.wind.speed}` + ' Km/h';
 })
 
 

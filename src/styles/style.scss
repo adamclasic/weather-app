@@ -17,6 +17,9 @@ h1 {
 .upper-cont {
   & > div {
     flex: 1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 120%;
   }
 }
 
