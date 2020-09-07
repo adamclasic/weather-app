@@ -28,6 +28,23 @@ async function getTemp(location=null) {
   return data;
 }
 
-getTemp('New York').then((res) => {console.log(res)})
+let weatherBox = document.querySelector('.weather-box')
+let cityName = weatherBox.querySelector('.city-name');
+let tempCels = weatherBox.querySelector('.temp-cont');
+let tempIcon = weatherBox.querySelector('#icon');
+let weatherStatus = weatherBox.querySelector('#weather');
+let tempMin = weatherBox.querySelector('#tempMin');
+let tempMax = weatherBox.querySelector('#tempMax');
+let wind = weatherBox.querySelector('#wind');
+getTemp().then(console.log)
+getTemp('New York').then((res) => {
+  cityName.innerHTML = res.name;
+  tempCels.innerHTML = res.main.temp;
+  tempIcon.setAttribute('src', "http://openweathermap.org/img/wn/" + res.weather[0].icon + ".png");
+  weatherStatus.innerHTML = res.weather[0].main;
+  tempMin.innerHTML = `Min temp: ${res.main.temp_min}`;
+  tempMax.innerHTML = `Max temp: ${res.main.temp_max}`;
+  wind.innerHTML = `Wind speed: ${res.wind.speed}`;
+})
 
 
