@@ -49,16 +49,20 @@ function domPopulator(res) {
 
 }
 getTemp().then(console.log)
-getTemp('New York').then((res) => {
-  domPopulator(res)
-})
+getTemp().then(domPopulator)
 
 
 
 // take use of search btn
 
-// let searchBtn = document.querySelector('#searchBtn');
-// let searchValue = document.querySelector('#searchInput');
-// searchBtn.addEventListener('click', (e) => {
-
-// })
+let searchBtn = document.querySelector('form');
+console.log(searchBtn);
+// console.log(searchValue);
+searchBtn.addEventListener('submit', (e) => {
+  let searchValue = document.querySelector('#searchInput').value;
+  e.preventDefault();
+  // console.log(searchValue);
+  getTemp(searchValue)
+    .then(domPopulator)
+    .catch(console.log)
+})
