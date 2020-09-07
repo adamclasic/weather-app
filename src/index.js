@@ -1,8 +1,5 @@
 import 'bootstrap';
 import './styles/style.scss';
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
 
 async function getIp() {
   const ip = await fetch("https://api.ipify.org/?format=json");
@@ -19,13 +16,14 @@ async function getLocation(ip) {
 }
 
 async function getTemp(location=null) {
+
   if (!location) {
     let ip = await getIp()
     location = await getLocation(ip);
   }
-  let temp = await fetch("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=98f5c39a38b987172eb484d62acb0f9c&units=metric");
-  let data = await temp.json();
-  return data;
+    let temp = await fetch("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=98f5c39a38b987172eb484d62acb0f9c&units=metric");
+    let data = await temp.json();
+    return data;
 }
 
 function domPopulator(res) {
@@ -51,18 +49,17 @@ function domPopulator(res) {
 getTemp().then(console.log)
 getTemp().then(domPopulator)
 
-
-
 // take use of search btn
 
 let searchBtn = document.querySelector('form');
 console.log(searchBtn);
-// console.log(searchValue);
 searchBtn.addEventListener('submit', (e) => {
   let searchValue = document.querySelector('#searchInput').value;
   e.preventDefault();
-  // console.log(searchValue);
   getTemp(searchValue)
     .then(domPopulator)
-    .catch(console.log)
+    .catch((e) => {
+      alert('location you entered is not valid')
+      getTemp().then(domPopulator)
+    })
 })
