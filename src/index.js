@@ -28,16 +28,17 @@ async function getTemp(location=null) {
   return data;
 }
 
-let weatherBox = document.querySelector('.weather-box')
-let cityName = weatherBox.querySelector('.city-name');
-let tempCels = weatherBox.querySelector('.temp-cont');
-let tempIcon = weatherBox.querySelector('#icon');
-let weatherStatus = weatherBox.querySelector('#weather');
-let tempMin = weatherBox.querySelector('#tempMin');
-let tempMax = weatherBox.querySelector('#tempMax');
-let wind = weatherBox.querySelector('#wind');
-getTemp().then(console.log)
-getTemp('New York').then((res) => {
+function domPopulator(res) {
+  
+  let weatherBox = document.querySelector('.weather-box')
+  let cityName = weatherBox.querySelector('.city-name');
+  let tempCels = weatherBox.querySelector('.temp-cont');
+  let tempIcon = weatherBox.querySelector('#icon');
+  let weatherStatus = weatherBox.querySelector('#weather');
+  let tempMin = weatherBox.querySelector('#tempMin');
+  let tempMax = weatherBox.querySelector('#tempMax');
+  let wind = weatherBox.querySelector('#wind');
+
   cityName.innerHTML = res.name;
   tempCels.innerHTML = res.main.temp + ' C';
   tempIcon.setAttribute('src', "http://openweathermap.org/img/wn/" + res.weather[0].icon + ".png");
@@ -45,6 +46,19 @@ getTemp('New York').then((res) => {
   tempMin.innerHTML = `Min temp: ${res.main.temp_min}` + ' C';
   tempMax.innerHTML = `Max temp: ${res.main.temp_max}` + ' C';
   wind.innerHTML = `Wind speed: ${res.wind.speed}` + ' Km/h';
+
+}
+getTemp().then(console.log)
+getTemp('New York').then((res) => {
+  domPopulator(res)
 })
 
 
+
+// take use of search btn
+
+// let searchBtn = document.querySelector('#searchBtn');
+// let searchValue = document.querySelector('#searchInput');
+// searchBtn.addEventListener('click', (e) => {
+
+// })
