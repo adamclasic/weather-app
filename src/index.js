@@ -28,12 +28,6 @@ async function getTemp(location=null) {
   return data;
 }
 
-// let ip = '';
-// let location = '';
-
-// async function getTemp
-
-// getLocation(getIp().then((res) => res)).then(console.log);
-// let display = '';
 getTemp('New York').then((res) => {console.log(res)})
-// document.querySelector('.d-flex').innerHTML = display;
+
+
