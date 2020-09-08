@@ -1,5 +1,11 @@
 @import 'bootstrap';
 
+body {
+  background-color: $info;
+  // background-image: url('../assets/images/rain.gif');
+  background-repeat: repeat;
+}
+
 h1 {
   background-color: aqua;
   color: #126488;

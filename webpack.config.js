@@ -9,6 +9,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|svg|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -24,4 +35,5 @@ module.exports = {
       }
     ],
   },
+  devtool: 'source-map'
 };
