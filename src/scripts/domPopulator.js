@@ -29,8 +29,8 @@ function setBackgroundImage(status) {
 }
 
 export default function domPopulator(object, metricValue = 'Metric') {
-  let unit = metricValue == 'Imperial' ? 'F' : 'C';
-  let speedUnit = metricValue == 'Imperial' ? 'M' : 'Km';
+  const unit = metricValue === 'Imperial' ? 'F' : 'C';
+  const speedUnit = metricValue === 'Imperial' ? 'M' : 'Km';
   const weatherBox = document.querySelector('.weather-box');
   const cityName = weatherBox.querySelector('.city-name');
   const tempCels = weatherBox.querySelector('.temp-cont');
