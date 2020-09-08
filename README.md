@@ -10,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/adamclasic/weather-app">
-    <img src="src/images/clouds.gif" alt="Logo" width="180" height="100">
+    <img src="srcassets/images/clouds.gif" alt="Logo" width="180" height="100">
   </a>
 
   <h3 align="center">Weather App</h3>
@@ -154,4 +154,4 @@ Give a ⭐️ if you like this project!
 [issues-url]: https://github.com/adamclasic/weather-app/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/adam-allalou
-[product-screenshot]: src/images/screenshot.png
+[product-screenshot]: srcassets/images/screenshot.png
