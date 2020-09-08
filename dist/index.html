@@ -6,12 +6,21 @@
   <body class="">
 <div class="d-flex custom-container w-100">
   <div class="search-cont w-100 position-absolute">
-    <form class="d-flex mx-auto w-300 justify-content-center" action="">
+    <form class="mx-auto w-300 justify-content-center" action="">
       <div class="input-group my-3">
         <input type="text" class="form-control" id="searchInput" placeholder="Search city" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" id="searchBtn" type="submit">search</button>
         </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputMetric">Metric</label>
+        </div>
+        <select class="custom-select" id="inputMetric">
+          <option selected value="Metric">Celsius</option>
+          <option value="Imperial">Fahrenheit</option>
+        </select>
       </div>
     </form>
   </div>
