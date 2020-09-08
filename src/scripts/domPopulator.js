@@ -28,7 +28,9 @@ function setBackgroundImage(status) {
   return url;
 }
 
-export default function domPopulator(object) {
+export default function domPopulator(object, metricValue = 'Metric') {
+  let unit = metricValue == 'Imperial' ? 'F' : 'C';
+  let speedUnit = metricValue == 'Imperial' ? 'M' : 'Km';
   const weatherBox = document.querySelector('.weather-box');
   const cityName = weatherBox.querySelector('.city-name');
   const tempCels = weatherBox.querySelector('.temp-cont');
@@ -40,11 +42,11 @@ export default function domPopulator(object) {
   const body = document.querySelector('body');
   const url = setBackgroundImage(object.weather[0].main);
   cityName.innerHTML = object.name;
-  tempCels.innerHTML = `${object.main.temp} C`;
+  tempCels.innerHTML = `${object.main.temp} ${unit}`;
   tempIcon.setAttribute('src', `http://openweathermap.org/img/wn/${object.weather[0].icon}.png`);
   weatherStatus.innerHTML = object.weather[0].main;
-  tempMin.innerHTML = `Min temp: ${object.main.temp_min} C`;
-  tempMax.innerHTML = `Max temp: ${object.main.temp_max} C`;
-  wind.innerHTML = `Wind speed: ${object.wind.speed} Km/h`;
+  tempMin.innerHTML = `Min temp: ${object.main.temp_min} ${unit}`;
+  tempMax.innerHTML = `Max temp: ${object.main.temp_max} ${unit}`;
+  wind.innerHTML = `Wind speed: ${object.wind.speed} ${speedUnit}/H`;
   body.style.backgroundImage = `url(${url})`;
 }

@@ -12,11 +12,17 @@ getTemp('paris').then(console.log);
 const searchBtn = document.querySelector('form');
 searchBtn.addEventListener('submit', (e) => {
   const searchValue = document.querySelector('#searchInput').value;
+  const metricValue = document.querySelector('#inputMetric').value;
+  // console.log(metricValue);
   e.preventDefault();
-  getTemp(searchValue)
-    .then(domPopulator)
+  getTemp(searchValue, metricValue)
+    .then((res) => {
+      domPopulator(res, metricValue)
+    })
     .catch(() => {
       alert('location you entered is not valid.');
-      getTemp().then(domPopulator);
+      getTemp().then((res) => {
+        domPopulator(res, metricValue)
+      })
     });
 });
