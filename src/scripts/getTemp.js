@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 async function getIp() {
   const ip = await fetch('https://api.ipify.org/?format=json');
   const dataIp = await ip.json();
