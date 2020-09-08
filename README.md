@@ -21,7 +21,7 @@
     <a href="https://github.com/adamclasic/weather-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://raw.githack.com/adamclasic/weather-app/feature/dist/index.html">View Demo</a>
+    <a href="http://raw.githack.com/adamclasic/weather-app/feature/dist/index.html">View Demo</a>
     ·
     <a href="https://github.com/adamclasic/weather-app/issues">Report Bug</a>
     ·
