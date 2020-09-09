@@ -6,7 +6,7 @@ import domPopulator from './scripts/domPopulator';
 
 getTemp()
   .then((res) => {
-    domPopulator(res, Metric);
+    domPopulator(res, 'Metric');
     document.querySelector('#searchInput').value = res.name;
   });
 
