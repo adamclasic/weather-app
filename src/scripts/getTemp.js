@@ -1,14 +1,22 @@
 /* eslint-disable import/prefer-default-export */
 async function getIp() {
-  const ip = await fetch('https://api.ipify.org/?format=json');
-  const dataIp = await ip.json();
-  return dataIp.ip;
+  try {
+    const ip = await fetch('https://api.ipify.org/?format=json');
+    const dataIp = await ip.json();
+    return dataIp.ip;
+  } catch {
+    document.querySelector('.weather-box').innerHTML = 'error retriving your Ip address. check your internet connection';
+  }
 }
 
 async function getLocation(ip) {
-  const location = await fetch(`https://ipapi.co/${ip}/json/`);
-  const dataLocation = await location.json();
-  return dataLocation.region;
+  try {
+    const location = await fetch(`https://ipapi.co/${ip}/json/`);
+    const dataLocation = await location.json();
+    return dataLocation.region;
+  } catch {
+    document.querySelector('.weather-box').innerHTML = 'error retriving your Location. try searching your location Manually';
+  }
 }
 
 async function getTemp(location = null, metricValue = 'Metric') {
