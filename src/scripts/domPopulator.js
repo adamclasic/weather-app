@@ -42,6 +42,7 @@ export default function domPopulator(object, metricValue = 'Metric') {
   const body = document.querySelector('body');
   const url = setBackgroundImage(object.weather[0].main);
   cityName.innerHTML = object.name;
+  document.querySelector('#searchInput').value = object.name;
   tempCels.innerHTML = `${object.main.temp} ${unit}`;
   tempIcon.setAttribute('src', `http://openweathermap.org/img/wn/${object.weather[0].icon}.png`);
   weatherStatus.innerHTML = object.weather[0].main;

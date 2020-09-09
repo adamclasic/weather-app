@@ -22,7 +22,7 @@ const getLocation = async (ip) => {
 };
 
 const getTemp = async (location = null, metricValue = 'Metric') => {
-  if (location === null) {
+  if (!location || location === '') {
     const ip = await getIp();
     location = await getLocation(ip);
     location.trim();
@@ -36,7 +36,6 @@ const getTemp = async (location = null, metricValue = 'Metric') => {
     setTimeout(() => {
       document.querySelector('.alert').classList.remove('show');
     }, 3000);
-    document.querySelector('#searchInput').value = '';
     return e;
   }
 };

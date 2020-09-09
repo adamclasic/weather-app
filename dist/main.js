@@ -18531,7 +18531,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(_scripts_getTemp__WEBPACK_IMPORTED_MODULE_2__["getTemp"])().then(_scripts_domPopulator__WEBPACK_IMPORTED_MODULE_3__["default"]);
+Object(_scripts_getTemp__WEBPACK_IMPORTED_MODULE_2__["getTemp"])()
+  .then((res) => {
+    Object(_scripts_domPopulator__WEBPACK_IMPORTED_MODULE_3__["default"])(res);
+    document.querySelector('#searchInput').value = res.name;
+  });
 
 const searchBtn = document.querySelector('form');
 const toggleBtn = document.querySelector('#toggleFC');
@@ -18543,14 +18547,17 @@ searchBtn.addEventListener('submit', (e) => {
   Object(_scripts_getTemp__WEBPACK_IMPORTED_MODULE_2__["getTemp"])(searchValue, metricValue)
     .then((res) => {
       Object(_scripts_domPopulator__WEBPACK_IMPORTED_MODULE_3__["default"])(res, metricValue);
+      document.querySelector('#searchInput').value = res.name;
     })
     .catch(() => {
       document.querySelector('.alert').classList.add('show');
       setTimeout(() => {
         document.querySelector('.alert').classList.remove('show');
-      }, 3000);
-      document.querySelector('#searchInput').value = '';
-      Object(_scripts_getTemp__WEBPACK_IMPORTED_MODULE_2__["getTemp"])().then(_scripts_domPopulator__WEBPACK_IMPORTED_MODULE_3__["default"]);
+      }, 1500);
+      Object(_scripts_getTemp__WEBPACK_IMPORTED_MODULE_2__["getTemp"])().then((res) => {
+        Object(_scripts_domPopulator__WEBPACK_IMPORTED_MODULE_3__["default"])(res);
+        document.querySelector('#searchInput').value = res.name;
+      });
     });
 });
 
@@ -18625,6 +18632,7 @@ function domPopulator(object, metricValue = 'Metric') {
   const body = document.querySelector('body');
   const url = setBackgroundImage(object.weather[0].main);
   cityName.innerHTML = object.name;
+  document.querySelector('#searchInput').value = object.name;
   tempCels.innerHTML = `${object.main.temp} ${unit}`;
   tempIcon.setAttribute('src', `http://openweathermap.org/img/wn/${object.weather[0].icon}.png`);
   weatherStatus.innerHTML = object.weather[0].main;
@@ -18670,7 +18678,7 @@ const getLocation = async (ip) => {
 };
 
 const getTemp = async (location = null, metricValue = 'Metric') => {
-  if (location === null) {
+  if (!location || location === '') {
     const ip = await getIp();
     location = await getLocation(ip);
     location.trim();
@@ -18684,7 +18692,6 @@ const getTemp = async (location = null, metricValue = 'Metric') => {
     setTimeout(() => {
       document.querySelector('.alert').classList.remove('show');
     }, 3000);
-    document.querySelector('#searchInput').value = '';
     return e;
   }
 };
