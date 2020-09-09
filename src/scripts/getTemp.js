@@ -19,15 +19,23 @@ async function getLocation(ip) {
   }
 }
 
-async function getTemp(location = null, metricValue = 'Metric') {
-  if (!location) {
-    const ip = await getIp();
-    location = await getLocation(ip);
-    location.trim();
+const getTemp = async (location = null, metricValue = 'Metric') => {
+  try {
+    if (!location) {
+      const ip = await getIp();
+      location = await getLocation(ip);
+      location.trim();
+    }
+    const temp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=98f5c39a38b987172eb484d62acb0f9c&units=${metricValue}`);
+    const data = await temp.json();
+    return data;
+  } catch {
+    document.querySelector('.alert').classList.add('show')
+    setTimeout(() => {
+    document.querySelector('.alert').classList.remove('show')
+    }, 3000)
+    document.querySelector('#searchInput').value = '';
   }
-  const temp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=98f5c39a38b987172eb484d62acb0f9c&units=${metricValue}`);
-  const data = await temp.json();
-  return data;
 }
 
 export { getTemp };

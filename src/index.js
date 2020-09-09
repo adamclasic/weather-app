@@ -29,12 +29,10 @@ searchBtn.addEventListener('submit', (e) => {
 });
 
 toggleBtn.addEventListener('click', () => {
-  console.log('hi');
   const searchValue = document.querySelector('#searchInput').value;
   let metricValue = document.querySelector('#inputMetric').value;
   metricValue = metricValue === 'Metric' ? 'Imperial' : 'Metric';
   document.querySelector('#inputMetric').value = metricValue;
-  console.log(metricValue);
   getTemp(searchValue, metricValue).then((res) => {
     domPopulator(res, metricValue)
   });
