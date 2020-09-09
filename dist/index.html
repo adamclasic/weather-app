@@ -23,8 +23,15 @@
         </select>
       </div>
     </form>
+    <div class="alert alert-warning alert-dismissible fade  w-300 m-auto" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   </div>
   <div class="weather-box w-300 m-auto p-3 rounded">
+    <button type="button" id="toggleFC" class="btn btn-light">F/C</button>
     <h3 class="city-name pb-3 text-center border-bottom ">Boston</h3>
     <div class="upper-cont border-bottom d-flex">
       <div class="temp-cont">19c</div>
