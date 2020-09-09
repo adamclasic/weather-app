@@ -18,11 +18,10 @@ searchBtn.addEventListener('submit', (e) => {
       domPopulator(res, metricValue);
     })
     .catch(() => {
-      // alert('location you entered is not valid.');
-      document.querySelector('.alert').classList.add('show')
+      document.querySelector('.alert').classList.add('show');
       setTimeout(() => {
-      document.querySelector('.alert').classList.remove('show')
-      }, 3000)
+        document.querySelector('.alert').classList.remove('show');
+      }, 3000);
       document.querySelector('#searchInput').value = '';
       getTemp().then(domPopulator);
     });
@@ -34,6 +33,6 @@ toggleBtn.addEventListener('click', () => {
   metricValue = metricValue === 'Metric' ? 'Imperial' : 'Metric';
   document.querySelector('#inputMetric').value = metricValue;
   getTemp(searchValue, metricValue).then((res) => {
-    domPopulator(res, metricValue)
+    domPopulator(res, metricValue);
   });
 });
