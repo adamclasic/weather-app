@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-async function getIp() {
+const getIp = async () => {
   try {
     const ip = await fetch('https://api.ipify.org/?format=json');
     const dataIp = await ip.json();
@@ -9,7 +9,7 @@ async function getIp() {
   }
 }
 
-async function getLocation(ip) {
+const getLocation = async (ip) => {
   try {
     const location = await fetch(`https://ipapi.co/${ip}/json/`);
     const dataLocation = await location.json();
