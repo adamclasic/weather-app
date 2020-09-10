@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Weather App</title>
+  </head>
+  <body class="">
+<div class="d-flex custom-container w-100">
+  <div class="search-cont w-100 position-absolute">
+    <form class="mx-auto w-300 justify-content-center" action="">
+      <div class="input-group my-3">
+        <input type="text" class="form-control" value="" id="searchInput" placeholder="Search city" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" id="searchBtn" type="submit">search</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputMetric">Metric</label>
+        </div>
+        <select class="custom-select" id="inputMetric">
+          <option selected value="Metric">Celsius</option>
+          <option value="Imperial">Fahrenheit</option>
+        </select>
+      </div>
+    </form>
+    <div class="alert alert-warning alert-dismissible fade  w-300 m-auto" role="alert">
+      The location you have entered is not valid.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="weather-box w-300 m-auto p-3 rounded">
+    <button type="button" id="toggleFC" class="btn btn-light">F/C</button>
+    <h3 class="city-name pb-3 text-center border-bottom ">Boston</h3>
+    <div class="upper-cont border-bottom d-flex">
+      <div class="temp-cont">19c</div>
+      <div class="icon-cont"><img id="icon" alt="weather status"></div>
+    </div>
+    <div class="lower-cont pt-3">
+      <p id="weather">10</p>
+      <p id="tempMin">11</p>
+      <p id="tempMax">12</p>
+      <p id="wind">121</p>
+    </div>
+  </div>
+</div>
+    <script src="main.js"></script>
+  </body>
+</html>
